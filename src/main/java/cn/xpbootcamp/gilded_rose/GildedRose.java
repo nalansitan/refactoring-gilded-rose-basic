@@ -14,15 +14,21 @@ class GildedRose {
     }
 
     public void update_quality() {
-        for (int i = MIN_QUALITY; i < goods.length; i++) {
+        for (int i = 0; i < goods.length; i++) {
             if (goods[i].name.equals(BACKSTAGE_PASSES)) {
                 calculate_backstage_pass(goods[i]);
             } else if (goods[i].name.equals(AGED_BRIE)){
                 calculate_aged_brie(goods[i]);
             } else if (goods[i].name.equals(SULFURAS)) {
                 calculate_sulfuras(goods[i]);
-            } else{
+            } else {
                 calculate_normal_goods(goods[i]);
+            }
+            if (goods[i].quality > MAX_QUALITY) {
+                goods[i].quality = MAX_QUALITY;
+            }
+            if (goods[i].quality < MIN_QUALITY) {
+                goods[i].quality = MIN_QUALITY;
             }
         }
     }
@@ -35,9 +41,6 @@ class GildedRose {
         if (good.sell_in < 6) {
             good.quality +=1;
         }
-        if (good.quality > MAX_QUALITY){
-            good.quality = MAX_QUALITY;
-        }
         good.sell_in -=1;
         if (good.sell_in < MIN_SELLIN){
             good.quality = MIN_QUALITY;
@@ -46,9 +49,6 @@ class GildedRose {
 
     private void calculate_aged_brie(Goods good){
         good.quality += 1;
-        if (good.quality > MAX_QUALITY){
-            good.quality = MAX_QUALITY;
-        }
         good.sell_in -= 1;
         if (good.sell_in < MIN_SELLIN) {
             good.quality += 1;
@@ -60,9 +60,7 @@ class GildedRose {
     }
 
     private void calculate_normal_goods(Goods good){
-        if (good.quality > MIN_QUALITY) {
-            good.quality -= 1;
-        }
+        good.quality -= 1;
         good.sell_in -= 1;
         if (good.sell_in < MIN_SELLIN) {
             good.quality -= 1;
