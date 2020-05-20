@@ -8,6 +8,10 @@ public class Goods {
 
     public int quality;
 
+    public static final int MIN_QUALITY = 0;
+    public static final int MAX_QUALITY = 50;
+    public static final int MIN_SELLIN = 0;
+
     public Goods(String name, int sell_in, int quality) {
         this.name = name;
         this.sell_in = sell_in;
