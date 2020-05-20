@@ -22,14 +22,14 @@ class GildedRose {
                     }
                 }
             } else if (goods[i].name.equals(BACKSTAGE_PASSES)) {
-                goods[i].quality = calculate_backstage_pass(goods[i].sell_in, goods[i].quality);
+                calculate_backstage_pass(goods[i]);
             } else {
                 if (goods[i].quality < MAX_QUALITY) {
                     goods[i].quality = goods[i].quality + 1;
                 }
             }
 
-            if (!goods[i].name.equals(SULFURAS)) {
+            if (!goods[i].name.equals(SULFURAS) && !goods[i].name.equals(BACKSTAGE_PASSES)) {
                 goods[i].sell_in = goods[i].sell_in - 1;
             }
 
@@ -53,17 +53,17 @@ class GildedRose {
         }
     }
 
-    private int calculate_backstage_pass(int sell_in, int quality){
-        quality += 1;
-        if (sell_in < 11) {
-            quality += 1;
+    private void calculate_backstage_pass(Goods good){
+        good.quality += 1;
+        if (good.sell_in < 11) {
+            good.quality += 1;
         }
-        if (sell_in < 6) {
-            quality +=1;
+        if (good.sell_in < 6) {
+            good.quality +=1;
         }
-        if (quality > MAX_QUALITY){
-            quality = MAX_QUALITY;
+        if (good.quality > MAX_QUALITY){
+            good.quality = MAX_QUALITY;
         }
-        return quality;
+        good.sell_in -=1;
     }
 }
