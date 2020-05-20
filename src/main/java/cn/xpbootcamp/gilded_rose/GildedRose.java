@@ -15,38 +15,19 @@ class GildedRose {
 
     public void update_quality() {
         for (int i = MIN_QUALITY; i < goods.length; i++) {
-            if (!goods[i].name.equals(AGED_BRIE)
-                    && !goods[i].name.equals(BACKSTAGE_PASSES)) {
-                if (goods[i].quality > MIN_QUALITY) {
-                    if (!goods[i].name.equals(SULFURAS)) {
-                        goods[i].quality = goods[i].quality - 1;
-                    }
-                }
-            } else if (goods[i].name.equals(BACKSTAGE_PASSES)) {
+            if (goods[i].name.equals(BACKSTAGE_PASSES)) {
                 calculate_backstage_pass(goods[i]);
             } else if (goods[i].name.equals(AGED_BRIE)){
                 calculate_aged_brie(goods[i]);
-            }
-
-            if (!goods[i].name.equals(SULFURAS)
-                    && !goods[i].name.equals(BACKSTAGE_PASSES)
-                    && !goods[i].name.equals(AGED_BRIE)) {
-                goods[i].sell_in = goods[i].sell_in - 1;
-            }
-
-            if (goods[i].sell_in < MIN_SELLIN) {
-                if (!goods[i].name.equals(AGED_BRIE)) {
-                    if (!goods[i].name.equals(BACKSTAGE_PASSES)) {
-                        if (goods[i].quality > MIN_QUALITY) {
-                            if (!goods[i].name.equals(SULFURAS)) {
-                                goods[i].quality = goods[i].quality - 1;
-                            }
-                        }
-                    }
-                } else {
-                    if (goods[i].quality < MAX_QUALITY) {
-                        goods[i].quality = goods[i].quality + 1;
-                    }
+            } else if (goods[i].name.equals(SULFURAS)) {
+                calculate_sulfuras(goods[i]);
+            } else{
+                if (goods[i].quality > MIN_QUALITY) {
+                    goods[i].quality -= 1;
+                }
+                goods[i].sell_in -= 1;
+                if (goods[i].sell_in < MIN_SELLIN) {
+                    goods[i].quality -= 1;
                 }
             }
         }
@@ -75,5 +56,12 @@ class GildedRose {
             good.quality = MAX_QUALITY;
         }
         good.sell_in -= 1;
+        if (good.sell_in < MIN_SELLIN) {
+            good.quality += 1;
+        }
+    }
+
+    private void calculate_sulfuras(Goods good){
+        return;
     }
 }
