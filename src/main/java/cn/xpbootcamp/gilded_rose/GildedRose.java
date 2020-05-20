@@ -1,12 +1,12 @@
 package cn.xpbootcamp.gilded_rose;
 
 class GildedRose {
-    public static final String AGED_BRIE = "Aged Brie";
-    public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
-    public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
-    public static final int MIN_QUALITY = 0;
-    public static final int MAX_QUALITY = 50;
-    public static final int MIN_SELLIN = 0;
+    private static final String AGED_BRIE = "Aged Brie";
+    private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+    private static final int MIN_QUALITY = 0;
+    private static final int MAX_QUALITY = 50;
+    private static final int MIN_SELLIN = 0;
     Goods[] goods;
 
     public GildedRose(Goods[] goods) {
