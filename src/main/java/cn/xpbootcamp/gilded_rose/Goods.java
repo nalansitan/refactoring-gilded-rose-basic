@@ -1,6 +1,6 @@
 package cn.xpbootcamp.gilded_rose;
 
-public class Item {
+public class Goods {
 
     public String name;
 
@@ -8,7 +8,7 @@ public class Item {
 
     public int quality;
 
-    public Item(String name, int sell_in, int quality) {
+    public Goods(String name, int sell_in, int quality) {
         this.name = name;
         this.sell_in = sell_in;
         this.quality = quality;

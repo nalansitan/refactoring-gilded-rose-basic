@@ -13,12 +13,12 @@ class GildedRoseTest {
     @ParameterizedTest
     @MethodSource({"provideAgedBries", "provideBackstagePass", "provideSulfuras", "provideRegularItems"})
     void should_update_item_correctly(TestFixture testFixture) {
-        Item item = createItem(testFixture.name, testFixture.sellIn, testFixture.quality);
+        Goods goods = createItem(testFixture.name, testFixture.sellIn, testFixture.quality);
 
-        new GildedRose(new Item[]{item}).update_quality();
+        new GildedRose(new Goods[]{goods}).update_quality();
 
-        Item expectedItem = createItem(testFixture.name, testFixture.updatedSellIn, testFixture.updatedQuality);
-        assertThat(item.toString()).isEqualTo(expectedItem.toString());
+        Goods expectedGoods = createItem(testFixture.name, testFixture.updatedSellIn, testFixture.updatedQuality);
+        assertThat(goods.toString()).isEqualTo(expectedGoods.toString());
     }
 
     private static Stream<TestFixture> provideAgedBries() {
@@ -66,8 +66,8 @@ class GildedRoseTest {
         );
     }
 
-    private static Item createItem(String name, int sellIn, int quality) {
-        return new Item(name, sellIn, quality);
+    private static Goods createItem(String name, int sellIn, int quality) {
+        return new Goods(name, sellIn, quality);
     }
 
     private static class TestFixture {
