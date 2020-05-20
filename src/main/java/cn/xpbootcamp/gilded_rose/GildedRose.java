@@ -22,13 +22,7 @@ class GildedRose {
             } else if (goods[i].name.equals(SULFURAS)) {
                 calculate_sulfuras(goods[i]);
             } else{
-                if (goods[i].quality > MIN_QUALITY) {
-                    goods[i].quality -= 1;
-                }
-                goods[i].sell_in -= 1;
-                if (goods[i].sell_in < MIN_SELLIN) {
-                    goods[i].quality -= 1;
-                }
+                calculate_normal_goods(goods[i]);
             }
         }
     }
@@ -63,5 +57,15 @@ class GildedRose {
 
     private void calculate_sulfuras(Goods good){
         return;
+    }
+
+    private void calculate_normal_goods(Goods good){
+        if (good.quality > MIN_QUALITY) {
+            good.quality -= 1;
+        }
+        good.sell_in -= 1;
+        if (good.sell_in < MIN_SELLIN) {
+            good.quality -= 1;
+        }
     }
 }
